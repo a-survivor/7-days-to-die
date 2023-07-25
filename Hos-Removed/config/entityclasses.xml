@@ -1,0 +1,165 @@
+<config>
+
+	<remove xpath ="//entity_class[contains(@name,'zombiePartyGirl')]"/>
+
+
+
+<insertAfter xpath ="//entity_class[@name='zombieMarleneRadiated']">
+
+
+<entity_class name="zombiePartyGirl" extends="zombieTemplateShort">
+    <property name="UserSpawnType" value="Menu"/>
+    <property name="Tags" value="entity,zombie,walker"/>
+    <property name="Mesh" value="@:Entities/Zombies/Prefabs/ZNurse.prefab"/>
+    <property name="SoundRandom" value="Enemies/Base_Zombie_Female/zombiefemaleroam"/>
+    <property name="SoundAlert" value="Enemies/Base_Zombie_Female/zombiefemalealert"/>
+    <property name="SoundAttack" value="Enemies/Base_Zombie_Female/zombiefemaleattack"/>
+    <property name="SoundHurt" value="Enemies/Base_Zombie_Female/zombiefemalepain"/>
+    <property name="SoundDeath" value="Enemies/Base_Zombie_Female/zombiefemaledeath"/>
+    <property name="SoundSense" value="Enemies/Base_Zombie_Female/zombiefemalesense"/>
+    <property name="ModelType" value="Standard"/>
+    <property name="WalkType" value="7"/>
+    <property name="Mass" value="130"/>
+    <property name="RootMotion" value="true"/>
+    <property name="HasDeathAnim" value="true"/>
+    <property name="AIPathCostScale" value=".5, .65"/>
+    <property name="DanceType" value="2" />
+    
+    <property name="DismemberTag_L_HeadGore"
+            value="
+                  Nurse/Blunt/Head;
+                  Nurse/Blade/Head"
+  
+            data="
+                  target=Neck+scale=0,0,0+atp=true+type=blunt+detach=true+atb=true;
+                  target=Neck+scale=0,0,0+atp=true+type=blade+detach=true+atb=true
+                  "/>
+
+    <property name="DismemberTag_L_LeftUpperLegGore"
+            value="
+                  Nurse/Blunt/LeftUpperLeg;
+                  Nurse/Blade/LeftUpperLeg"
+  
+            data="
+                  target=LeftUpLeg+scale=1,0.5,1+type=blunt+detach=true;
+                  target=LeftUpLeg+scale=1,0.5,1+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_LeftLowerLegGore"
+            value="
+                  Nurse/Blunt/LeftLowerLeg;
+                  Nurse/Blade/LeftLowerLeg"
+  
+            data="
+                  target=LeftLeg+scale=0,0,0+atp=true+type=blunt+detach=true;
+                  target=LeftLeg+scale=0,0,0+atp=true+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_RightUpperLegGore"
+          value="
+                  Nurse/Blunt/RightUpperLeg;
+                  Nurse/Blade/RightUpperLeg"
+  
+            data="
+                  target=RightUpLeg+scale=1,0.4,1+type=blunt+detach=true;
+                  target=RightUpLeg+scale=1,0.4,1+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_RightLowerLegGore"
+          value="
+                  Nurse/Blunt/RightLowerLeg;
+                  Nurse/Blade/RightLowerLeg"
+  
+            data="
+                  target=RightLeg+scale=0,0,0+atp=true+type=blunt+detach=true;
+                  target=RightLeg+scale=0,0,0+atp=true+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_LeftUpperArmGore"
+          value="
+                  Nurse/Blunt/LeftUpperArm;
+                  Nurse/Blade/LeftUpperArm"
+  
+            data="
+                  target=LeftArmRoll+scale=.5,1,1+type=blunt+detach=true;
+                  target=LeftArmRoll+scale=.5,1,1+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_LeftLowerArmGore"
+          value="
+                  Nurse/Blunt/LeftLowerArm;
+                  Nurse/Blade/LeftLowerArm"
+  
+            data="
+                  target=LeftForeArmRoll+scale=0,1,1+atp=true+type=blunt+detach=true;
+                  target=LeftForeArmRoll+scale=0,1,1+atp=true+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_RightUpperArmGore"
+          value="
+                Nurse/Blunt/RightUpperArm;
+                  Nurse/Blade/RightUpperArm"
+  
+            data="
+                  target=RightArmRoll+scale=.5,1,1+type=blunt+detach=true;
+                  target=RightArmRoll+scale=.5,1,1+type=blade+detach=true
+                  "/>
+
+    <property name="DismemberTag_L_RightLowerArmGore"
+          value="
+                  Nurse/Blunt/RightLowerArm;
+                  Nurse/Blade/RightLowerArm"
+  
+            data="
+                  target=RightForeArmRoll+scale=0,1,1+atp=true+type=blunt+detach=true;
+                  target=RightForeArmRoll+scale=0,1,1+atp=true+type=blade+detach=true
+                  "/>
+
+    <!-- Gameplay zombieNurse -->
+    <property name="MoveSpeedAggro" value="0.3, 1.35"/> <!-- slim, regular -->
+    <effect_group name="Base Effects">
+        <passive_effect name="HealthMax" operation="base_set" value="125"/>
+    </effect_group>
+</entity_class>
+
+<entity_class name="zombiePartyGirlFeral" extends="zombiePartyGirl">
+    <property name="UserSpawnType" value="Menu"/>
+    <property name="Tags" value="entity,zombie,walker,feral"/>
+    <property name="Mesh" value="@:Entities/Zombies/Prefabs/ZNurseFeral.prefab"/>
+
+    <!-- Gameplay zombieNurseFeral -->
+    <property name="DismemberMultiplierHead" value=".7"/><property name="DismemberMultiplierArms" value=".7"/><property name="DismemberMultiplierLegs" value=".7"/><!-- Feral -->
+    <property name="PainResistPerHit" value=".7"/><!-- Feral -->
+    <property name="MoveSpeedAggro" value="0.6, 1.45"/> <!-- slim, feral -->
+    <property name="JumpMaxDistance" value="4.6, 5"/>
+    <property name="HandItem" value="meleeHandZombieShortFeral"/>
+    <property name="ExperienceGain" value="750"/><!-- XP grunt feral -->
+    <property name="LootDropProb" value=".03"/> <!-- Feral -->
+
+    <effect_group name="Base Effects">
+        <passive_effect name="HealthMax" operation="base_set" value="300"/>
+        <!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--> <!-- Feral damage -->
+    </effect_group>
+</entity_class>
+
+<entity_class name="zombiePartyGirlRadiated" extends="zombiePartyGirlFeral">
+    <property name="UserSpawnType" value="Menu"/>
+    <property name="Tags" value="entity,zombie,walker,feral,radiated"/>
+    <property name="Mesh" value="@:Entities/Zombies/Prefabs/ZNurseRadiated.prefab"/>
+
+    <!-- Gameplay zombieNurseRadiated -->
+    <property name="DismemberMultiplierHead" value=".4"/><property name="DismemberMultiplierArms" value=".4"/><property name="DismemberMultiplierLegs" value=".4"/><!-- Radiated -->
+    <property name="PainResistPerHit" value=".9"/><!-- Radiated -->
+    <property name="ExperienceGain" value="1200"/><!-- XP grunt radiated -->
+
+    <effect_group name="Base Effects">
+        <passive_effect name="HealthMax" operation="base_set" value="550"/>
+        <!--<passive_effect name="EntityDamage" operation="perc_add" value="0"/>--><!-- Feral damage -->
+        <triggered_effect trigger="onOtherDamagedSelf" action="ModifyCVar" target="self" cvar="RadiatedRegenAmount" operation="set" value="4"/>
+        <triggered_effect trigger="onOtherDamagedSelf" action="AddBuff" target="self" buff="buffRadiatedRegen"/>
+    </effect_group>
+</entity_class>
+
+</insertAfter>
+
+</config>
